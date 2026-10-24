@@ -18,4 +18,10 @@ internal sealed class InventoryRepository(InventoryDbContext db) : IInventoryRep
 
     public Task SaveChangesAsync(CancellationToken ct = default)
         => db.SaveChangesAsync(ct);
+
+    public Task<List<InventoryItemEntity>> GetAllAsync(CancellationToken ct = default)
+        => db.InventoryItems.AsNoTracking().ToListAsync(ct);
+
+    public Task<List<ReservationEntity>> GetReservationsAsync(CancellationToken ct = default)
+        => db.Reservations.AsNoTracking().ToListAsync(ct);
 }
