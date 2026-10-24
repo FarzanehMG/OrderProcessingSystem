@@ -21,15 +21,11 @@ internal sealed class InventoryItemConfiguration : IEntityTypeConfiguration<Inve
         builder.Property(x => x.CreatedDate)
             .IsRequired();
 
+        var seedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
+
         builder.HasData(
-            new { ProductId = 1L,
-                Quantity = 100, 
-                CreatedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero) },
-            new { ProductId = 2L, 
-                Quantity = 5, 
-                CreatedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero) },
-            new { ProductId = 3L,
-                Quantity = 0,
-                CreatedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero) });
+            new { ProductId = 1L, Quantity = 100, CreatedDate = seedDate, CreatedBy = "system" },
+            new { ProductId = 2L, Quantity = 5, CreatedDate = seedDate, CreatedBy = "system" },
+            new { ProductId = 3L, Quantity = 0, CreatedDate = seedDate, CreatedBy = "system" });
     }
 }
