@@ -8,4 +8,7 @@ public interface IInventoryRepository
     Task<bool> ReservationExistsAsync(long orderId, CancellationToken ct = default);
     Task AddReservationAsync(ReservationEntity reservation, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
+
+    Task<List<InventoryItemEntity>> GetAllAsync(CancellationToken ct = default);
+    Task<List<ReservationEntity>> GetReservationsAsync(CancellationToken ct = default);
 }
